@@ -788,6 +788,21 @@ if [ -z "${JAVACMD}" ] || [ ! -x "${JAVACMD}" ] ; then
 	unset arr comp ver path
 fi
 
+################################################################################
+################################################################################
+############################ FORCE bundled Java JRE ############################
+################################################################################
+################################################################################
+# log the Java Command
+stub_logger "[JavaCommand >>> before] '$JAVACMD'"
+# reset Java Command to bundled Java JRE
+JAVACMD="${AppPackageFolder}"/Contents/Frameworks/openjdk-17.0.1/Contents/Home/bin/java
+stub_logger "[JavaCommand >>> after] '$JAVACMD'"
+################################################################################
+################################################################################
+################################################################################
+################################################################################
+
 # log the Java Command and the extracted version number
 stub_logger "[JavaCommand] '$JAVACMD'"
 stub_logger "[JavaVersion] $(get_java_version_from_cmd "${JAVACMD}")${JAVACMD_version:+ / $JAVACMD_version}"
